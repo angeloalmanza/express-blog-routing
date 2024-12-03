@@ -9,8 +9,12 @@ router.get('/', (req, res) => {
 
 // Show
 router.get('/:id', (req, res) => {
-    const postID = req.params.id;
-    res.json("Leggo l'elemento con id " + postID);
+    const postID = parseInt(req.params.id);
+    const post = posts.find(p => p.id === postID);
+    if(post){
+        res.json(post);
+    }
+    
 })
 
 // Create
